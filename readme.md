@@ -152,3 +152,14 @@ document: <file>
 - Sending `multipart/form-data` and JSON requests using the Fetch API
 - Managing in-memory state (token, collection ID) across async functions
 - OAuth2 Bearer token flow from the client side
+
+---
+
+## Limitations and Improvements
+
+- **Token lost on refresh**: The JWT is stored in a JS variable — refreshing the page requires logging in again. Using `sessionStorage` or `localStorage` would persist the session.
+- **Collection ID lost on refresh**: Same issue — the collection ID is in memory only. It would need to be stored or re-uploaded after a refresh.
+- **One document per session**: The frontend tracks a single `collectionId` at a time. Supporting multiple documents would require a document selector UI.
+- **No error feedback**: Most error cases (wrong password, upload failure, bad token) are not surfaced clearly to the user. Adding proper error messages would improve usability.
+- **CORS required**: The backend must have CORS enabled to accept requests from the browser. Ensure `fastapi.middleware.cors` is configured on the backend.
+- **Plain text only**: Only `.txt` files are supported for upload.
