@@ -4,7 +4,26 @@ A minimal browser-based frontend for the RAG API. Users can register, log in, up
 
 ---
 
+## How It Works
 
+```
+Open index.html in browser
+      |
+      v
+Register + Login  -->  JWT token stored in memory
+      |
+      v
+Upload .txt file  -->  collection_id returned and stored
+      |
+      v
+Ask a question
+      |
+      v
+Backend retrieves relevant chunks  -->  LLM generates answer
+      |
+      v
+Answer displayed in the browser
+``` 
 
 ---
 
